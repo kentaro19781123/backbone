@@ -3,8 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <title>backbone</title>
+  <link rel="stylesheet" href="css/style.css"></link>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/main.js"></script>
 </head>
 <body>
+
+<h1>Backbone.js</h1>
+<h2>Viewオブジェクトの利用</h2>
+<pre>
+  var 変数 = Backbone.View.extend(...設定情報...);
+  Viewは、Backbone.Viewオブジェクトの「extend」メソッドを使って作成
+  このオブジェクトを元にnewして操作するオブジェクトを作成します
+  var 変数 = new オブジェクト(...設定情報...);
+</pre>
+
+<h3>renderメソッドについて</h3>
+<pre>
+  {
+    render:finction(){....}
+  }
+  「render」は画面表示のレンダリングを行うためのメソッド
+</pre>
+<h3>$elとel</h3>
+<pre>
+  「$el」は、Viewオブジェクトよって生成される表示エレメントを設定したjQueryオブジェクト
+  「el」は、表示するエレメントのオブジェクトそのものを示すプロパティ（jQueryを使わない場合、こっちを利用）
+  ※Backbone.jsではjQurtyの利用を前提に作られている
+</pre>
+
+<div class="result">
+  <div id="msg"></div>
+</div>
+
+
+<h2>Viewの活用</h2>
+<h3>構造化されたコンンテンツの操作</h3>
+<pre>
+構造化されたHTMLのコンテンツをViewから更新する
+</pre>
+<div class="result">
+  <div id="msg2">
+    <p id="title"></p>
+    <ul>
+      <li id="item1"></li>
+      <li id="item2"></li>
+      <li id="item3"></li>
+    </ul>
+  </div>
+</div>
+
+
+<h3>intializeによる初期化</h3>
+<pre>
+「intialize」メソッドを使い。Viewの初期化処理をする
+操作する対象を整理して、使いやすくする。
+よく使うエレメントをViewプロパティに登録して扱えるようにする
+</pre>
+<div class="result">
+  <div id="msg3">
+    <p id="title3"></p>
+    <ul>
+      <li id="item13"></li>
+      <li id="item23"></li>
+      <li id="item33"></li>
+    </ul>
+  </div>
+</div>
+
+
+<h3>イベントの利用（eventプロパティ）</h3>
+<pre>
+  Viewでは表示する対象となるエレメントのイベントを設定することができる
+  event: {
+    イベント名: function(event){...処理...};
+  }
+</pre>
+<div class="result">
+<input type="button" id="btn1" value="click">
+</div>
+
+
+<h3>新たなエレメントの生成</h3>
+<pre>
+  タグの名前やclass、id、その他の属性の値などをプロパティとして用意しておく
+  「el」プロパティは用意しないように注意する
+</pre>
+<div class="result">
+<div id="msg4"></div>
+</div>
+
+
+<h3>テンプレートの利用</h3>
+<pre>
+  &lt;script&gt;タグの中にHTMLのタグを記述して作成する
+  &lt;script id="IDの指定"&gt;
+    ...表示する内容...
+  &lt;/script&gt;
+
+  以下のようにしてView内でロードする
+  var 変数 = _.template(...テンプレートの内容...)
+  <%= 変数 %>でテンプレートに渡された値を出力させることができる
+</pre>
+<div class="result">
+  <script id="myview-template">
+  <div style="border:1px solid #ccc;padding:0 20px;background:#fff;">
+    <p style="font-size:18px;"><%= title %></p>
+    <hr site="1" color="#ddd">
+    <p style="font-size:14px;"><%= content %></p>
+  </div>
+  </script>
+  <div id="msg5"></div>
+</div>
+
+
+<h3>複数Viewの連結</h3>
+<pre>
+elを指定することで特定要素に自動的に割り当てることができる
+制御したい要素が複数ある場合は、その数だけViewを作ることができる
+</pre>
+<div class="result">
+
+  <div id="msg6">
+    <p id="title6"></p>
+    <ul>
+      <li id="item16"></li>
+      <li id="item26"></li>
+      <li id="item36"></li>
+    </ul>
+  </div>
+  <input type="text" id="input6">
+  <input type="button" id="btn6">
+
+</div>
+
+
+
+
+
+<h3></h3>
+<pre>
+
+</pre>
+<div class="result">
+</div>
 
 </body>
 </html>
