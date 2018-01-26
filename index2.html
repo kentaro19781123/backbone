@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>backbone</title>
+  <!-- <link rel="stylesheet" href="css/style.css"></link> -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/main2.js"></script>
+
+</head>
+<body>
+
+<h1>Backbone.js</h1>
+<h3>modelの利用</h3>
+<h3>modelオブジェクトについて</h3>
+<pre>
+データベースを利用するには、modelオブジェクトを利用する
+var 変数 = Backbone.Model.extend { ..設定情報.. }
+
+extendメソッドを呼び出して、modelオブジェクトを作成する。
+
+</pre>
+
+<h3>collectionオブジェクトについて</h3>
+<pre>
+データベースでデータは、modelで取り出すことができるが、
+多数のデータを管理する機能は無いため、modelとセットでcollectionを用意する。
+
+var 変数 = Backbone.Collection.extend( ..設定情報.. );
+</pre>
+
+<h3>fetchとlistenToの仕組み</h3>
+<pre>
+  データの取得はfetchを呼び出すだけ
+  listenToがイベントをチェックし措定のイベントが発生すると第三の引数を実行する
+  listenTo( 対象となるオブジェクト, イベント, 実行する処理 );
+</pre>
+
+<h3>getによるデータ取得</h3>
+<pre>
+  var id = $('#my_id').val();
+  var result = myDataCollection.get(id);
+</pre>
+
+<h3>createメソッドについて</h3>
+<pre>
+  create{ 保存するオブジェクト, アクセス後の処理 }
+
+  第一引数には保存するデータをまとめたオブジェクト
+  { 'name': 値, 'mail': 値, 'tel': 値 }
+
+  {
+    success: function(collection, response){ ...成功時の処理... },
+    error: function(e){ ...エラー時の処理... }
+  }
+  ※必要なければ省略可能
+</pre>
+
+
+<div class="result">
+  <style>
+  table,th,td {
+    border:1px solid #999;
+  }
+
+  th {
+    background: #ccc;
+  }
+
+  </style>
+  <script id="mydata_tmpl">
+  <tr>
+  <td><%=name %></td>
+  <td><%=mail %></td>
+  <td><%=tel %></td>
+  </tr>
+  </script>
+
+
+<div id="form">
+  <div><input type="text" id="my_id"></div>
+  <div><input type="button" id="findBtn" value="GET!"></div>
+</div>
+<div id="form">
+  <div><input type="text" id="name" name="name"></div>
+  <div><input type="text" id="mail" name="mail"></div>
+  <div><input type="text" id="tel" name="tel"></div>
+  <div><input type="button" id="createBtn" value="CREATE!"></div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>MAIL</th>
+      <th>TEL</th>
+    <tr>
+  </thead>
+  <tbody id="list">
+  </tbody>
+</table>
+
+</div>
+
+
+
+<h3></h3>
+<pre>
+
+</pre>
+<div class="result">
+</div>
+
+</body>
+</html>
